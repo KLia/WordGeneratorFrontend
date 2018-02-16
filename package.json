@@ -1,0 +1,28 @@
+{
+  "name": "markovifyfrontend",
+  "version": "1.0.0",
+  "description": "Frontend Website for Markovifying conlang corpuses",
+  "main": "apigClientCaller.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "animate-js": "^0.3.2",
+    "autoprefixer": "^7.2.6",
+    "bootstrap": "^4.0.0",
+    "jquery": "^3.3.1",
+    "jquery-ui-dist": "^1.12.1",
+    "popper": "^1.0.1",
+    "popper.js": "^1.12.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "apiGateway.getWords(\"a b c ca cb ba ab abc\", 5, 2, 2)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "markovifyfrontend"
+  },
+  "author": "Keith Lia",
+  "license": "ISC"
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>   
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wordseses</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="" name="keywords">
+<meta content="" name="description">
+
+<link href="favicon.ico" rel="shortcut icon">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
+
+<!-- JQuery CSS Files -->
+<link href="lib/jquery-ui/css/jquery-ui.min.css" rel="stylesheet">
+
+<!-- Bootstrap CSS File -->
+<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Libraries CSS Files -->
+<link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="lib/animate-css/animate.min.css" rel="stylesheet">
+
+<!-- Main Stylesheet File -->
+<link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div id="preloader"></div>
+
+<!--==========================
+Header Section
+============================-->
+<header id="header">
+    <div class="container">
+        <div id="logo" class="pull-left">
+        <h1><a href="#home">Wordseses.com</a></h1>
+        </div>
+
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
+                <li class="menu-active"><a href="#markovify">Word Generator</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#contact">Contact Me</a></li>
+            </ul>
+        </nav>
+        <!-- #nav-menu-container -->
+    </div>
+</header>
+<!-- #header -->
+
+<section id="content">
+    <div class="container wow fadeInUp fadeIn">
+    </div>
+</section>
+<div id="word-results"></div>
+
+<!-- JS Scripts -->
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/jquery-ui/js/jquery-ui.min.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="lib/superfish/hoverIntent.js"></script>
+<script src="lib/superfish/superfish.min.js"></script>
+<script src="lib/morphext/morphext.min.js"></script>
+<script src="lib/wow/wow.min.js"></script>
+<script src="lib/stickyjs/sticky.js"></script>
+<script src="lib/easing/easing.js"></script>
+
+<script src="js/custom.js"></script>
+<script src="contactform/contactform.js"></script>
+
+<script type="text/javascript" src="lib/axios/dist/axios.standalone.js"></script>
+<script type="text/javascript" src="lib/CryptoJS/rollups/hmac-sha256.js"></script>
+<script type="text/javascript" src="lib/CryptoJS/rollups/sha256.js"></script>
+<script type="text/javascript" src="lib/CryptoJS/components/hmac.js"></script>
+<script type="text/javascript" src="lib/CryptoJS/components/enc-base64.js"></script>
+<script type="text/javascript" src="lib/url-template/url-template.js"></script>
+<script type="text/javascript" src="lib/apiGatewayCore/sigV4Client.js"></script>
+<script type="text/javascript" src="lib/apiGatewayCore/apiGatewayClient.js"></script>
+<script type="text/javascript" src="lib/apiGatewayCore/simpleHttpClient.js"></script>
+<script type="text/javascript" src="lib/apiGatewayCore/utils.js"></script>
+<script type="text/javascript" src="lib/markovifier/apigClient.js"></script>
+<script type="text/javascript" src="lib/markovifier/apigClientCaller.js"></script>
+
+<!--Page Specific JS -->
+<script type="text/javascript">
+    apiGateway.getWords("word-results", "cab car bra bar arc carb crab cabs scars arcs", 37, 2, 3);
+</script>
+
+</body>
+</html> 
