@@ -104,36 +104,45 @@ jQuery(document).ready(function( $ ) {
 });
 
 function loadContentJS() {
+    loadSliders();
+}
+
+function loadSliders() {
     $( ".slider" ).slider({
-      min: 1,
-      max: 1,
-      create: function( event, ui ) {
-        $(this).slider("option", "max", sliderMax($(this).attr('id')));
-        $(this).find('.ui-slider-handle').text($( this ).slider( "value" ) );
-      },
-      slide: function( event, ui ) {
-        $('.slider-counter').text(ui.value);
-      },
-      start: function( event, ui ) {
-        $(this).find('.ui-slider-handle').text('');
-        $(this).find('.ui-slider-handle').append("<span class='slider-counter'>"+ui.value+"</span><span class='slider-pointer'></span>");
-      }, 
-      stop: function( event, ui ) {
-        //$('.slider-counter').remove();
-        //$('.slider-pointer').remove();
-        //$(this).find('.ui-slider-handle').text(ui.value);
-      }
+        min: 1,
+        max: 1,
+        create: function( event, ui ) {
+        getSliderOptions( $(this) );
+            $(this).find('.ui-slider-handle').text($( this ).slider( "value" ) );
+        },
+        slide: function( event, ui ) {
+            $('.slider-counter').text(ui.value);
+        },
+        start: function( event, ui ) {
+            $(this).find('.ui-slider-handle').text('');
+            $(this).find('.ui-slider-handle').append("<span class='slider-counter'>"+ui.value+"</span><span class='slider-pointer'></span>");
+        }, 
+        stop: function( event, ui ) {
+            $('.slider-counter').remove();
+            $('.slider-pointer').remove();
+            $(this).find('.ui-slider-handle').text(ui.value);
+        }
     });
 }
 
-function sliderMax(sliderId) {
-  switch (sliderId){
+function getSliderOptions(slider) {
+  switch (slider.attr('id')) {
     case 'state-size':
-        return 4;
+        slider.slider("option", "max", 3);
+        return;
     case 'min-len-word':
-        return 3;
+        slider.slider("option", "max", 3);
+        return;
     case 'num-words':
-        return 200;
+        slider.slider("option", "min", 50);
+        slider.slider("option", "max", 200);
+        slider.slider("option", "step", 50);
+        return;
   }
-  return 0;
+  return;
 }
