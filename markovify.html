@@ -1,8 +1,8 @@
 <div class="form">
   <form action="" method="post" role="form" class="contactForm">
     <div class="form-group">
-      <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Corpus" placeholder="Enter or paste your text here"></textarea>
-      <div class="validation"></div>
+      <textarea class="form-control" id="corpus" name="corpus" rows="5" data-rule="required" data-msg="Corpus" placeholder="Enter or paste your text here"></textarea>
+      <div id="corpus-validation" class="validation"></div>
     </div>
     <div class="col-div">
       <div class="col-div-segment">
@@ -18,14 +18,14 @@
         </div>
       </div>
       <div class="col-div-segment">
-        <div class="col-div-title">State Size</div>
+        <div class="col-div-title">No. of Words</div>
         <div id="num-words" class="col-div-content slider">
           <div id="num-words-handle" class="ui-slider-handle"></div>
         </div>
       </div>
     </div>
-    <div class="text-center"><button type="submit">Generate</button></div>
+    <div id="generate-words" class="text-center button">Generate</button></div>
   </form>
-
-  <table id="words"><tr><td>tatata</td></tr></table>
 </div>
+
+<div id="words"></div>

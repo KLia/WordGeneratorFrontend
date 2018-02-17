@@ -2,6 +2,11 @@ jQuery(document).ready(function( $ ) {
   // Preloader
   $(window).on('load', function() {
     $('#preloader').delay(100).fadeOut('slow',function(){$(this).remove();});
+
+    //load home page
+    $('#content div').load("/markovify.html", function() {
+        loadContentJS();
+    });
   });
 
   // Hero rotating texts
@@ -65,8 +70,8 @@ jQuery(document).ready(function( $ ) {
         var url = target.selector.replace('#','') + '.html';
 
         $('#content div').load(url, function() {
-            var newone = this.cloneNode(true);
-            $(this).replaceWith(newone);
+            var clone = this.cloneNode(true);
+            $(this).replaceWith(clone);
 
             loadContentJS();
         });
@@ -105,6 +110,8 @@ jQuery(document).ready(function( $ ) {
 
 function loadContentJS() {
     loadSliders();
+    setUpGenerateWordsButton();
+
 }
 
 function loadSliders() {
@@ -134,6 +141,7 @@ function getSliderOptions(slider) {
   switch (slider.attr('id')) {
     case 'state-size':
         slider.slider("option", "max", 3);
+        slider.slider("option", "value", 2);
         return;
     case 'min-len-word':
         slider.slider("option", "max", 3);
@@ -145,4 +153,52 @@ function getSliderOptions(slider) {
         return;
   }
   return;
+}
+
+function setUpGenerateWordsButton() {
+    $("#generate-words").click(function() {
+        var validation = $("#corpus-validation");
+        validation.text("");
+        validation.removeClass("display");
+
+        var corpus = $("#corpus").val();
+
+        if (corpus == '') {
+            validation.text("Please enter a corpus");
+            validation.addClass("display");
+            return;
+        }
+
+        var stateSize = $("#state-size").slider("value");
+        var minLenWords = $("#min-len-word").slider("value");
+        var numOfWords = $("#num-words").slider("value");
+        var data = apiGateway.getWords(corpus, numOfWords, stateSize, minLenWords, buildWordsTable, "words");
+    });
+}
+
+function buildWordsTable(element, data) {
+    if (data['errorMessage'] != null) {
+        var validation  = $("#corpus-validation");
+        validation.text(data['errorMessage']);
+        validation.addClass("display");
+        return;
+    }
+
+    var parsedData = JSON.parse(data);
+	var table = '';
+	
+	for (var i = 0; i < parsedData.length; i++) {
+		table += '<div>' + parsedData[i] + '</div>';
+	}
+    
+    document.getElementById(element).innerHTML = table;
+    
+    var target = $('#'+element).position().top;
+    if( $('#header').length ) {
+        top_space = $('#header').outerHeight();
+      }
+      
+      $('html, body').animate({
+          scrollTop: target - top_space
+      }, 1500, 'easeInOutExpo');
 }

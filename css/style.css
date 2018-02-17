@@ -502,6 +502,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 .col-div{
   display: grid;
   width: 100%;
+  margin-bottom: 10px;
 }
 
 .col-div-segment {
@@ -509,14 +510,14 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .col-div-title {
-  width: 22%;
+  width: 37%;
   float: left;
   margin-right: 26px;
   text-align: right;
 }
 
 .col-div-content {
-  width: 60%;
+  width: 50%;
   float: left;
   margin-top: 3px;
 }
@@ -544,6 +545,34 @@ body.mobile-nav-active #mobile-nav-toggle {
     border-top: 10px solid #111;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
+}
+
+div.button {
+  background: #03C4EB;
+  width: 120px;
+  margin: auto;
+  border: 0;
+  padding: 10px;
+  color: #fff;
+  transition: 0.4s;
+}
+
+#words {
+  margin: 20px auto;
+  width: 1125px;
+}
+
+#words div{
+  width: 150px;
+  float: left;
+  margin: 10px 0 0 35px;
+  word-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+  #words {
+    width: 100%;
+  }
 }
 
 /* Get Started Section
@@ -888,12 +917,16 @@ body.mobile-nav-active #mobile-nav-toggle {
   display: block;
 }
 
-#contact .form .validation {
+.validation {
   color: red;
   display: none;
   margin: 0 0 20px;
   font-weight: 400;
   font-size: 13px;
+}
+
+.validation.display {
+  display: block;
 }
 
 #contact .form input, #contact .form textarea {
