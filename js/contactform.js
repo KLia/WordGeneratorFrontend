@@ -1,9 +1,11 @@
 
 jQuery(document).ready(function($) {
-    "use strict";
-    
+    "use strict";    
+    $(".loaderContainer").hide();
+
     //Contact
     $('#send-email').click(function(){
+        $(".loaderContainer").show();
         var f = $('.form').find('.form-group'), 
         ferror = false, 
         emailExp = /^[^\s()<>@,;:\/]+@\w[\w\.-]+\.[a-z]{2,}$/i;
@@ -80,8 +82,13 @@ jQuery(document).ready(function($) {
                 i.next('.validation').html( ( ierror ? (i.attr('data-msg') != undefined ? i.attr('data-msg') : 'wrong Input') : '' ) ).show('blind');
             }
         });
-        if( ferror ) return false; 	
+
+        if( ferror ) {
+            $(".loaderContainer").hide();
+            return false; 	
+        }
         apiGateway.sendEmail(jsonBody['subject'], jsonBody['body'], jsonBody['replyToAddress'], jsonBody['name'], showEmailSentStatus);
+        
         return false;
     });
     
@@ -98,4 +105,6 @@ function showEmailSentStatus(flag) {
         $("#errormessage").addClass("show");
         $('#errormessage').html(msg);
     }
+
+    $(".loaderContainer").hide();
 }
