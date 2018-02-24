@@ -510,7 +510,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .col-div-title {
-  width: 37%;
+  width: 30%;
   float: left;
   margin-right: 26px;
   text-align: right;
@@ -521,6 +521,13 @@ body.mobile-nav-active #mobile-nav-toggle {
   float: left;
   margin-top: 3px;
 }
+
+.special-text {
+  color: #03C4EB;
+}
+
+/* Markovify Section
+--------------------------------*/
 
 .slider-counter {
   margin: -45px 0 0 -3px;
@@ -547,30 +554,70 @@ body.mobile-nav-active #mobile-nav-toggle {
     border-right: 10px solid transparent;
 }
 
-div.button {
-  background: #03C4EB;
-  width: 120px;
-  margin: auto;
-  border: 0;
-  padding: 10px;
-  color: #fff;
-  transition: 0.4s;
-}
-
 #words {
   margin: 20px auto;
   width: 1125px;
+
+  display: flex;
+  flex-flow: wrap;
+  min-height: 40vh;
 }
 
 #words div{
-  width: 150px;
-  float: left;
-  margin: 10px 0 0 35px;
+  margin: 15px 0 0 35px;
   word-wrap: break-word;
 }
 
 @media (max-width: 768px) {
   #words {
+    width: 100%;
+  }
+
+  #words div {
+    width: 100%;
+  }
+}
+
+/* How It Works Section
+--------------------------------*/
+
+#how-it-works {
+  width: 70%;
+  margin: auto;
+}
+
+.quote {
+  position: relative;
+  background: #f6f6f6;
+  padding: 20px;
+  font-size: 16px;
+  font-style: italic;
+  border-radius: 5px;
+}
+
+.quote ul {
+  list-style-type: none;
+}
+
+.quote.left {
+  text-align: left;
+}
+
+.quote.left ul li {
+  font-style: oblique;
+  margin-bottom: 10px;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.code {
+  font-family: 'Inconsolata', monospace;
+}
+
+@media (max-width: 768px) {
+  #how-it-works {
     width: 100%;
   }
 }
@@ -934,7 +981,7 @@ div.button {
   box-shadow: none;
 }
 
-#contact .form button[type="submit"] {
+.form button[type="submit"] {
   background: #03C4EB;
   border: 0;
   padding: 10px 24px;

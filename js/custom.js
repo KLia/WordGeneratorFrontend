@@ -66,10 +66,10 @@ jQuery(document).ready(function( $ ) {
   //load content
   $('a[href*="#"]:not([href="#"])').on('click', function() {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-        var target = $(this.hash);
-        var url = target.selector.replace('#','') + '.html';
+        var target = $(this.hash).selector.replace('#','');
+        var url = target + '.html';
 
-        $('#content div').load(url, function() {
+        $('#content div.container').load(url, function() {
             var clone = this.cloneNode(true);
             $(this).replaceWith(clone);
 
@@ -111,7 +111,7 @@ jQuery(document).ready(function( $ ) {
 function loadContentJS() {
     loadSliders();
     setUpGenerateWordsButton();
-
+    loadContactForm();
 }
 
 function loadSliders() {
@@ -152,11 +152,10 @@ function getSliderOptions(slider) {
         slider.slider("option", "step", 50);
         return;
   }
-  return;
 }
 
 function setUpGenerateWordsButton() {
-    $("#generate-words").click(function() {
+    $("#generate-words button").click(function() {
         var validation = $("#corpus-validation");
         validation.text("");
         validation.removeClass("display");
@@ -172,7 +171,8 @@ function setUpGenerateWordsButton() {
         var stateSize = $("#state-size").slider("value");
         var minLenWords = $("#min-len-word").slider("value");
         var numOfWords = $("#num-words").slider("value");
-        var data = apiGateway.getWords(corpus, numOfWords, stateSize, minLenWords, buildWordsTable, "words");
+        apiGateway.getWords(corpus, numOfWords, stateSize, minLenWords, buildWordsTable, "words");
+        return false;
     });
 }
 
@@ -188,7 +188,7 @@ function buildWordsTable(element, data) {
 	var table = '';
 	
 	for (var i = 0; i < parsedData.length; i++) {
-		table += '<div>' + parsedData[i] + '</div>';
+		table += '<div class="col-sm-2">' + parsedData[i] + '</div>';
 	}
     
     document.getElementById(element).innerHTML = table;
@@ -201,4 +201,9 @@ function buildWordsTable(element, data) {
       $('html, body').animate({
           scrollTop: target - top_space
       }, 1500, 'easeInOutExpo');
+}
+
+
+function loadContactForm() {
+    $.getScript("/js/contactform.js");
 }

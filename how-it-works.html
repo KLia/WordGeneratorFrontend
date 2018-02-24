@@ -1,0 +1,169 @@
+<div class="row">
+    <div class="col-md-12">
+      <h3 class="section-title">How it works</h3>
+      <div class="section-title-divider"></div>
+      <p class="section-description">
+          The <span class="special-text">Word Generator</span> is built using a model called Markov Chains - a piece of software that utilizes statistics to determine 
+          what letters might occur next to each. The code was extended and built upon an open-source project called <a href="https://github.com/jsvine/markovify">Markovify</a>.
+      </p>
+    </div>    
+    
+    <div class="section-description">
+        You can specify the following settings to generate new words:
+    </div>
+
+    <div class="section-description">
+        <div class="quote left">
+            <ul>
+                <li><span class="bold">Corpus</span> - The original text. Words must be separated by spaces or new lines. </li>
+                <li><span class="bold">State Size</span> - Grouping size to determine the next probability</li>
+                <li><span class="bold">Minimum word length</span> - All generated words should be at least this many letters long. 
+                    Sometimes it is impossible to generate words that are long enough if the state size is too big. </li>
+                <li><span class="bold">Number of words</span> - The number of words that the program returns back as a result</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section-description">
+        There are two components needed to generate new words - <span class='italic'>corpus</span> and <span class='italic'>state size</span>. 
+        The <span class='italic'>corpus</span> is a list of words that the software will break down into letters and extract statistical information from.  
+        The <span class='italic'>state size</span> is the number of consecutive letters that are grouped together, and from which the next probable letter is determined.
+        The best default value for this is generally 2, but you can play around with the slider to get different results.
+    </div>
+
+    <div class="section-description">
+        Let's take the following corpus as an example, with a state size of 2.
+        
+    </div>
+
+    <div class="section-description">
+        <div class="quote code">
+            <ul>
+                <li>arc </li>
+                <li>arcs</li>
+                <li>bar </li>
+                <li>bra </li>
+                <li>cab </li>
+                <li>cabs </li>
+                <li>car </li>
+                <li>carb </li>
+                <li>crab </li>
+                <li>scars </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section-description">
+        The program must now determine a starting letter. The words in the corpus start either with an <span class='italic'>a</span>,
+        <span class='italic'>b</span>, <span class='italic'>c</span> or <span class='italic'>s</span>. The probabilities of choosing a starting letter are: 
+     </div>
+
+     <div class="section-description">
+        <div class="quote code">
+            <ul>
+                
+                <li>a = 2/10 = 20% </li>
+                <li>b = 2/10 = 20%</li>
+                <li>c = 5/10 = 50% </li>
+                <li>s = 1/10 = 10% </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="section-description">
+        Let's assume it picks the letter with the highest probability - <span class='italic'>c</span>. Now it needs to choose the next letter, which can either
+        be an <span class='italic'>a</span> or an <span class='italic'>r</span>. The probability of picking the next letter is:
+    </div>
+
+    <div class="section-description">
+        <div class="quote code">
+            <ul>
+                <li class="special-text">c</li>
+                <li>a = 4/5 = 80% </li>
+                <li>r = 1/5 = 20% </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section-description">
+        Let's assume again that it picks the letter with the highest probability - <span class='italic'>a</span>. So far, the program has build the word 
+        <span class='special-text'>ca</span>. The length of the word is two letters long, which matches our <span class='italic'>state size</span>. Therefore,
+        from now on, all probabilities need to include the previous 2 letters. The words in the corpus that match our current <span class='italic'>state</span>
+        are <span class='italic'><span class='special-text'>ca</span>b</span>, 
+        <span class='italic'><span class='special-text'>ca</span>bs</span>, 
+        <span class='italic'><span class='special-text'>ca</span>r</span>,
+        <span class='italic'><span class='special-text'>ca</span>rb</span> and
+        <span class='italic'>s<span class='special-text'>ca</span>rs</span>.
+        The probability of picking the next letter is:
+    </div>
+
+    <div class="section-description">
+        <div class="quote code">
+            <ul>
+                <li class="special-text">ca</li>
+                <li>b = 2/5 = 40% </li>
+                <li>r = 3/5 = 60% </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section-description">
+        Again, we assume it picks the letter with the highest probability - <span class='italic'>r</span>. The word so far is <span class='special-text'>car</span>,
+        and since our <span class='italic'>state size</span> is 2, the program picks the last 2 letters to determine the probability for the next round. This means 
+        that our current state is <span class='special-text'>ar</span>, and the words that match that are
+        <span class='italic'><span class='special-text'>ar</span>c</span>,
+        <span class='italic'><span class='special-text'>ar</span>cs</span>,
+        <span class='italic'>b<span class='special-text'>ar</span></span>,
+        <span class='italic'>c<span class='special-text'>ar</span></span>,
+        <span class='italic'>c<span class='special-text'>ar</span>b</span>,
+        <span class='italic'>sc<span class='special-text'>ar</span>s</span>. The probabilities of the next letter are:
+    </div>
+
+    <div class="section-description">
+        <div class="quote code">
+            <ul>
+                <li class="special-text">car</li>
+                <li>End of word = 2/6 = 33.33% </li>
+                <li>c = 2/6 = 33.33% </li>
+                <li>b = 1/6 = 16.67% </li>
+                <li>s = 1/6 = 16.67% </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section-description">
+        The program picks <span class='italic'>c</span>. Our word is now <span class='special-text'>carc</span>, and our current state is
+        <span class='special-text'>rc</span>. The words that match that are
+        <span class='italic'>a<span class='special-text'>rc</span></span>,
+        <span class='italic'>a<span class='special-text'>rc</span>s</span>. The probabilities of the next letter are:
+    </div>
+
+    <div class="section-description">
+        <div class="quote code">
+            <ul>
+                <li class="special-text">carc</li>
+                <li>End of word = 1/2 = 50% </li>
+                <li>s = 1/2 = 50% </li>
+            </ul>
+        </div>
+    </div>    
+
+    <div class="section-description">
+        The program picks <span class='italic'>s</span>. Our word is now <span class='special-text'>carcs</span>, and our current state is
+        <span class='special-text'>cs</span>. The only word in the corpus that matches that is <span class='italic'>ar<span class='special-text'>cs</span></span>. 
+        The probability of the next letter is:
+    </div>
+
+    <div class="section-description">
+        <div class="quote code">
+            <ul>
+                <li class="special-text">carcs</li>
+                <li>End of word = 1/1 = 100% </li>
+            </ul>
+        </div>
+    </div>    
+
+    <div class="section-description">
+        At this point, the program chooses the <span class='italic'>End of word</span> token, and returns the generated word - <span class='special-text'>carcs</span>. 
+    </div>    
+  </div>
