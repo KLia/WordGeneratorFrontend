@@ -69,7 +69,7 @@ jQuery(document).ready(function( $ ) {
         var target = $(this.hash).selector.replace('#','');
         var url = target + '.html';
 
-        $('#content div.container').load(url, function() {
+        $('#content div#contentContainer').load(url, function() {
             var clone = this.cloneNode(true);
             $(this).replaceWith(clone);
 
