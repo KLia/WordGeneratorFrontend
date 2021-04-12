@@ -171,7 +171,8 @@ function setUpGenerateWordsButton() {
         var stateSize = $("#state-size").slider("value");
         var minLenWords = $("#min-len-word").slider("value");
         var numOfWords = $("#num-words").slider("value");
-        apiGateway.getWords(corpus, numOfWords, stateSize, minLenWords, buildWordsTable, "words");
+        var removeDuplicates = $("#remove-duplicates:checked").length > 0;
+        apiGateway.getWords(corpus, numOfWords, stateSize, minLenWords, removeDuplicates, buildWordsTable, "words");
         return false;
     });
 }
