@@ -8,18 +8,17 @@
   },
   "dependencies": {
     "animate-js": "^0.3.2",
-    "autoprefixer": "^7.2.6",
+    "autoprefixer": "^10.4.16",
     "aws-sdk": "^2.201.0",
     "bootstrap": "^4.0.0",
     "jquery": "^3.3.1",
     "jquery-ui-dist": "^1.12.1",
     "jquery-ui-touch-punch": "^0.2.3",
-    "nodemailer": "^4.4.2",
+    "nodemailer": "^6.9.6",
     "popper": "^1.0.1",
     "popper.js": "^1.12.9",
-    "update": "^0.7.4"
+    "update": "^0.4.2"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "apiGateway.getWords(\"a b c ca cb ba ab abc\", 5, 2, 2)"
   },
